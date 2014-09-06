@@ -51,6 +51,16 @@ if(my_strpos($_SERVER['PHP_SELF'], 'search.php'))
 	$templatelist .= 'forumdisplay_thread_description';
 }
 
+if(my_strpos($_SERVER['PHP_SELF'], 'showthread.php'))
+{
+	global $templatelist;
+	if(isset($templatelist))
+	{
+		$templatelist .= ',';
+	}
+	$templatelist .= 'showthread_description';
+}
+
 // Tell MyBB when to run the hooks
 $plugins->add_hook("forumdisplay_thread", "threaddescription_forum_description");
 $plugins->add_hook("showthread_start", "threaddescription_description");
@@ -126,7 +136,16 @@ function threaddescription_activate()
 
 	$insert_array = array(
 		'title'		=> 'forumdisplay_thread_description',
-		'template'	=> $db->escape_string('<em><span class="smalltext" style="background: url(\'images/nav_bit.gif\') no-repeat left; padding-left: 18px;">{$description}</span></em><br />'),
+		'template'	=> $db->escape_string('<em><span class="smalltext" style="background: url(\'images/nav_bit.png\') no-repeat left; padding-left: 18px;">{$description}</span></em><br />'),
+		'sid'		=> '-1',
+		'version'	=> '',
+		'dateline'	=> TIME_NOW
+	);
+	$db->insert_query("templates", $insert_array);
+
+	$insert_array = array(
+		'title'		=> 'showthread_description',
+		'template'	=> $db->escape_string('<em><span class="smalltext">{$description}</span></em>'),
 		'sid'		=> '-1',
 		'version'	=> '',
 		'dateline'	=> TIME_NOW
@@ -145,7 +164,7 @@ function threaddescription_activate()
 function threaddescription_deactivate()
 {
 	global $db;
-	$db->delete_query("templates", "title IN('description','forumdisplay_thread_description')");
+	$db->delete_query("templates", "title IN('description','forumdisplay_thread_description','showthread_description')");
 
 	include MYBB_ROOT."/inc/adminfunctions_templates.php";
 	find_replace_templatesets("forumdisplay_thread", "#".preg_quote('{$thread[\'description\']}')."#i", '', 0);
@@ -159,7 +178,7 @@ function threaddescription_deactivate()
 function threaddescription_forum_description()
 {
 	global $thread, $templates;
-	if($thread['description'])
+	if(!empty($thread['description']))
 	{
 		$description = htmlspecialchars_uni($thread['description']);
 
@@ -170,11 +189,12 @@ function threaddescription_forum_description()
 // Show description on showthread
 function threaddescription_description()
 {
-	global $thread;
-	if($thread['description'])
+	global $thread, $templates;
+	if(!empty($thread['description']))
 	{
 		$description = htmlspecialchars_uni($thread['description']);
-		$thread['description'] = "<em><span class=\"smalltext\">{$description}</span></em>";
+
+		eval("\$thread['description'] = \"".$templates->get("showthread_description")."\";");
 	}
 }
 
