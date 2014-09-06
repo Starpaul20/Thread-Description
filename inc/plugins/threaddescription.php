@@ -63,9 +63,12 @@ $plugins->add_hook("editpost_do_editpost_end", "threaddescription_do_editpost");
 // The information that shows up on the plugin manager
 function threaddescription_info()
 {
+	global $lang;
+	$lang->load("description", true);
+
 	return array(
-		"name"				=> "Thread Description",
-		"description"		=> "Allows users to enter a short description underneath the thread subject.",
+		"name"				=> $lang->threaddescription_info_name,
+		"description"		=> $lang->threaddescription_info_desc,
 		"website"			=> "http://galaxiesrealm.com/index.php",
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",
