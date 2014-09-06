@@ -3,5 +3,5 @@
 
 ## Version number reset for MyBB 1.8 ##
 
-1.0
+1.0 (February 18th, 2013)
 - Initial release
