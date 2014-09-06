@@ -70,8 +70,7 @@ function threaddescription_info()
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",
 		"version"			=> "1.0",
-		"guid"				=> "c8ec620e5d6ef6208474dcba023d2219",
-		"compatibility"		=> "16*"
+		"compatibility"		=> "18*"
 	);
 }
  
