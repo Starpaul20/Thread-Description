@@ -213,9 +213,9 @@ function threaddescription_newthread()
 	global $db, $lang, $mybb, $templates, $post_errors, $thread, $threaddescription, $description;
 	$lang->load("description");
 
-	if($mybb->input['previewpost'] || $post_errors)
+	if(isset($mybb->input['previewpost']) || $post_errors)
 	{
-		$description = htmlspecialchars_uni($mybb->input['description']);
+		$description = htmlspecialchars_uni($mybb->get_input('description'));
 	}
 	else
 	{
@@ -231,7 +231,7 @@ function threaddescription_do_newthread()
 	global $db, $mybb, $tid;
 
 	$description = array(
-		"description" => $db->escape_string($mybb->input['description'])
+		"description" => $db->escape_string($mybb->get_input('description'))
 	);
 	$db->update_query("threads", $description, "tid='{$tid}'");
 }
@@ -242,11 +242,12 @@ function threaddescription_editpost()
 	global $db, $lang, $mybb, $post, $thread, $templates, $post_errors, $threaddescription, $description;
 	$lang->load("description");
 
-	if($thread['firstpost'] == $mybb->input['pid'])
+	$pid = $mybb->get_input('pid', MyBB::INPUT_INT);
+	if($thread['firstpost'] == $pid)
 	{
-		if($mybb->input['previewpost'] || $post_errors)
+		if(isset($mybb->input['previewpost']) || $post_errors)
 		{
-			$description = htmlspecialchars_uni($mybb->input['description']);
+			$description = htmlspecialchars_uni($mybb->get_input('description'));
 		}
 		else
 		{
@@ -263,7 +264,7 @@ function threaddescription_do_editpost()
 	global $db, $mybb, $tid;
 
 	$description = array(
-		"description" => $db->escape_string($mybb->input['description'])
+		"description" => $db->escape_string($mybb->get_input('description'))
 	);
 	$db->update_query("threads", $description, "tid='{$tid}'");
 }
