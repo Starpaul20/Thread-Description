@@ -94,7 +94,15 @@ function threaddescription_install()
 	global $db;
 	threaddescription_uninstall();
 
-	$db->add_column("threads", "description", "varchar(240) NOT NULL AFTER subject");
+	switch($db->type)
+	{
+		case "sqlite":
+			$db->add_column("threads", "description", "varchar(240) NOT NULL default ''");
+			break;
+		default:
+			$db->add_column("threads", "description", "varchar(240) NOT NULL default '' AFTER subject");
+			break;
+	}
 }
 
 // Checks to make sure plugin is installed
