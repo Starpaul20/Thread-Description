@@ -210,7 +210,7 @@ function threaddescription_description()
 // Add description on new thread
 function threaddescription_newthread()
 {
-	global $db, $lang, $mybb, $templates, $post_errors, $thread, $threaddescription, $description;
+	global $lang, $mybb, $templates, $post_errors, $thread, $threaddescription, $description;
 	$lang->load("description");
 
 	if(isset($mybb->input['previewpost']) || $post_errors)
@@ -239,7 +239,7 @@ function threaddescription_do_newthread()
 // Show description on edit page
 function threaddescription_editpost()
 {
-	global $db, $lang, $mybb, $post, $thread, $templates, $post_errors, $threaddescription, $description;
+	global $lang, $mybb, $thread, $templates, $post_errors, $threaddescription, $description;
 	$lang->load("description");
 
 	$pid = $mybb->get_input('pid', MyBB::INPUT_INT);
