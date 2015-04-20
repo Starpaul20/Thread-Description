@@ -82,7 +82,7 @@ function threaddescription_info()
 		"website"			=> "http://galaxiesrealm.com/index.php",
 		"author"			=> "Starpaul20",
 		"authorsite"		=> "http://galaxiesrealm.com/index.php",
-		"version"			=> "1.0",
+		"version"			=> "1.1",
 		"codename"			=> "threaddescription",
 		"compatibility"		=> "18*"
 	);
