@@ -11,7 +11,7 @@ if(!defined("IN_MYBB"))
 }
 
 // Neat trick for caching our custom template(s)
-if(my_strpos($_SERVER['PHP_SELF'], 'forumdisplay.php'))
+if(THIS_SCRIPT == 'forumdisplay.php')
 {
 	global $templatelist;
 	if(isset($templatelist))
@@ -21,7 +21,7 @@ if(my_strpos($_SERVER['PHP_SELF'], 'forumdisplay.php'))
 	$templatelist .= 'forumdisplay_thread_description';
 }
 
-if(my_strpos($_SERVER['PHP_SELF'], 'newthread.php'))
+if(THIS_SCRIPT == 'newthread.php')
 {
 	global $templatelist;
 	if(isset($templatelist))
@@ -31,7 +31,7 @@ if(my_strpos($_SERVER['PHP_SELF'], 'newthread.php'))
 	$templatelist .= 'description';
 }
 
-if(my_strpos($_SERVER['PHP_SELF'], 'editpost.php'))
+if(THIS_SCRIPT == 'editpost.php')
 {
 	global $templatelist;
 	if(isset($templatelist))
@@ -41,7 +41,7 @@ if(my_strpos($_SERVER['PHP_SELF'], 'editpost.php'))
 	$templatelist .= 'description';
 }
 
-if(my_strpos($_SERVER['PHP_SELF'], 'search.php'))
+if(THIS_SCRIPT == 'search.php')
 {
 	global $templatelist;
 	if(isset($templatelist))
@@ -51,7 +51,7 @@ if(my_strpos($_SERVER['PHP_SELF'], 'search.php'))
 	$templatelist .= 'forumdisplay_thread_description';
 }
 
-if(my_strpos($_SERVER['PHP_SELF'], 'showthread.php'))
+if(THIS_SCRIPT == 'showthread.php')
 {
 	global $templatelist;
 	if(isset($templatelist))
