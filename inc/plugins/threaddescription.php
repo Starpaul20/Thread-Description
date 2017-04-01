@@ -268,5 +268,3 @@ function threaddescription_do_editpost()
 	);
 	$db->update_query("threads", $description, "tid='{$tid}'");
 }
-
-?>
