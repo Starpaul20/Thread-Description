@@ -261,10 +261,13 @@ function threaddescription_editpost()
 // Update description
 function threaddescription_do_editpost()
 {
-	global $db, $mybb, $tid;
+	global $db, $mybb, $tid, $first_post;
 
-	$description = array(
-		"description" => $db->escape_string($mybb->get_input('description'))
-	);
-	$db->update_query("threads", $description, "tid='{$tid}'");
+	if($first_post)
+	{
+		$description = array(
+			"description" => $db->escape_string($mybb->get_input('description'))
+		);
+		$db->update_query("threads", $description, "tid='{$tid}'");
+	}
 }
