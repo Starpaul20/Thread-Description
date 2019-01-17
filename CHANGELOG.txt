@@ -1,3 +1,8 @@
+1.2 (January 16, 2019)
+- Bug: Fixed Thread Description erased on edit (Issue #1)
+- Use THIS_SCRIPT for template caching
+- Removed PHP closing tags
+
 1.1 (April 20th, 2015)
 - Added PostgreSQL and SQLite support
 - Using get_input
