@@ -164,7 +164,7 @@ function threaddescription_activate()
 	);
 	$db->insert_query("templates", $insert_array);
 
-	include MYBB_ROOT."/inc/adminfunctions_templates.php";
+	require_once MYBB_ROOT."/inc/adminfunctions_templates.php";
 	find_replace_templatesets("editpost", "#".preg_quote('{$posticons}')."#i", '{$threaddescription}{$posticons}');
 	find_replace_templatesets("newthread", "#".preg_quote('{$posticons}')."#i", '{$threaddescription}{$posticons}');
 	find_replace_templatesets("showthread", "#".preg_quote('{$thread[\'subject\']}</strong>')."#i", '{$thread[\'subject\']}</strong><br />{$thread[\'description\']}');
@@ -178,7 +178,7 @@ function threaddescription_deactivate()
 	global $db;
 	$db->delete_query("templates", "title IN('description','forumdisplay_thread_description','showthread_description')");
 
-	include MYBB_ROOT."/inc/adminfunctions_templates.php";
+	require_once MYBB_ROOT."/inc/adminfunctions_templates.php";
 	find_replace_templatesets("forumdisplay_thread", "#".preg_quote('{$thread[\'description\']}')."#i", '', 0);
 	find_replace_templatesets("search_results_threads_thread", "#".preg_quote('{$thread[\'description\']}')."#i", '', 0);
 	find_replace_templatesets("showthread", "#".preg_quote('<br />{$thread[\'description\']}')."#i", '', 0);
