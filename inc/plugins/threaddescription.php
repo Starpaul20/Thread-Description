@@ -11,54 +11,57 @@ if(!defined("IN_MYBB"))
 }
 
 // Neat trick for caching our custom template(s)
-if(THIS_SCRIPT == 'forumdisplay.php')
+if(defined('THIS_SCRIPT'))
 {
-	global $templatelist;
-	if(isset($templatelist))
+	if(THIS_SCRIPT == 'forumdisplay.php')
 	{
-		$templatelist .= ',';
+		global $templatelist;
+		if(isset($templatelist))
+		{
+			$templatelist .= ',';
+		}
+		$templatelist .= 'forumdisplay_thread_description';
 	}
-	$templatelist .= 'forumdisplay_thread_description';
-}
 
-if(THIS_SCRIPT == 'newthread.php')
-{
-	global $templatelist;
-	if(isset($templatelist))
+	if(THIS_SCRIPT == 'newthread.php')
 	{
-		$templatelist .= ',';
+		global $templatelist;
+		if(isset($templatelist))
+		{
+			$templatelist .= ',';
+		}
+		$templatelist .= 'description';
 	}
-	$templatelist .= 'description';
-}
 
-if(THIS_SCRIPT == 'editpost.php')
-{
-	global $templatelist;
-	if(isset($templatelist))
+	if(THIS_SCRIPT == 'editpost.php')
 	{
-		$templatelist .= ',';
+		global $templatelist;
+		if(isset($templatelist))
+		{
+			$templatelist .= ',';
+		}
+		$templatelist .= 'description';
 	}
-	$templatelist .= 'description';
-}
 
-if(THIS_SCRIPT == 'search.php')
-{
-	global $templatelist;
-	if(isset($templatelist))
+	if(THIS_SCRIPT == 'search.php')
 	{
-		$templatelist .= ',';
+		global $templatelist;
+		if(isset($templatelist))
+		{
+			$templatelist .= ',';
+		}
+		$templatelist .= 'forumdisplay_thread_description';
 	}
-	$templatelist .= 'forumdisplay_thread_description';
-}
 
-if(THIS_SCRIPT == 'showthread.php')
-{
-	global $templatelist;
-	if(isset($templatelist))
+	if(THIS_SCRIPT == 'showthread.php')
 	{
-		$templatelist .= ',';
+		global $templatelist;
+		if(isset($templatelist))
+		{
+			$templatelist .= ',';
+		}
+		$templatelist .= 'showthread_description';
 	}
-	$templatelist .= 'showthread_description';
 }
 
 // Tell MyBB when to run the hooks
