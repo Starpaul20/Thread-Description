@@ -220,10 +220,6 @@ function threaddescription_newthread()
 	{
 		$description = htmlspecialchars_uni($mybb->get_input('description'));
 	}
-	else
-	{
-		$description = htmlspecialchars_uni($thread['description']);
-	}
 
 	eval("\$threaddescription = \"".$templates->get("description")."\";");
 }
