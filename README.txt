@@ -1,6 +1,6 @@
 ## INFORMATION ##
 
-Thread Description (1.3) for MyBB 1.8
+Thread Description (1.4) for MyBB 1.8
 Created by: Starpaul20
 Copyright: ©2013
 License: GPL
